@@ -32,7 +32,8 @@ img {
 
 .topnav {
   overflow: hidden;
-  margin: 3.5%;
+  margin: 3.5% 0;
+  
 }
 .header-logo {
     float: left;
@@ -119,9 +120,9 @@ main {
   font-weight: bolder;
   color: black;
   padding-top: 0.5vw;
-  padding-left: 2vw;
-  padding-right: 2vw;
-  margin: 1px 20px 15px;
+  /* padding-left: 2vw; */
+  /* padding-right: 2vw; */
+  margin: 1px 20px 15px 0px;
   border-radius: 2rem;
   text-align: justify;
 
