@@ -32,7 +32,10 @@ img {
 
 .topnav {
   overflow: hidden;
-  margin: 3.5%;
+  margin-top: 3.5%;
+  margin-bottom: 3.5%;
+  
+  width: 100%;
 }
 .header-logo {
     float: left;
@@ -46,10 +49,16 @@ img {
   color: #000000;
   text-align: center;
   padding: 12px 12px;
-  margin: 5px;
+  margin: 1px;
   text-decoration: none;
   font-size: 20px;
   font-family: Roboto, sans-serif;
+}
+
+.topnav a span {
+ 
+  padding-left: 4px;
+  padding-right: 4px;
 }
 
 .topnav a:hover {
@@ -58,10 +67,18 @@ img {
   border-radius: 15px;
 }
 
+.topnav a:hover span {
+   border-bottom: 1px solid white;
+}
+
 .topnav a.active {
   background-color: #ff0000;
   color: #ffffff;
   border-radius: 15px;
+}
+
+.topnav a.active span {
+  border-bottom: 1px solid white;
 }
 
 .topnav .icon {
@@ -106,9 +123,9 @@ main {
   font-weight: bolder;
   color: black;
   padding-top: 0.5vw;
-  padding-left: 2vw;
-  padding-right: 2vw;
-  margin: 1px 20px 15px;
+  
+  padding-right: 3.5vw; 
+  margin: 1px 0px 15px;
   border-radius: 2rem;
   text-align: justify;
 
@@ -405,7 +422,7 @@ input[data-error]::after {
   font-size: 16px;
 }
 .hero-section {
-  min-height: 93vh;
+  max-height: 650px;
   border-radius: 10px;
   display: grid;
   grid-template-columns: repeat(12, 1fr);
@@ -421,6 +438,7 @@ input[data-error]::after {
   position: relative;
   text-align: left;
   min-width: 424px;
+  max-height: 650px;
 }
 .hero-content::after {
   content: "";
@@ -456,6 +474,8 @@ input[data-error]::after {
 }
 .hero-img {
   grid-column: span 8;
+  max-height: 650px;
+  
 }
 .hero-img img {
   width: 100%;
