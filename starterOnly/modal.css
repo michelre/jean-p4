@@ -32,14 +32,14 @@ img {
 
 .topnav {
   overflow: hidden;
-  margin: 3.5% 0;
+  margin: 3.5% 0 3.5% 3.5%;
   
 }
 .header-logo {
     float: left;
 }
 .main-navbar {
-    float: right;
+  float: right;
 }
 .topnav a {
   float: left;
@@ -82,11 +82,18 @@ img {
   display: none;
 }
 
+a.icon {
+  color:#ff0000;
+}
+
 @media screen and (max-width: 768px) {
   .topnav a {display: none;}
   .topnav a.icon {
     float: right;
     display: block;
+  }
+  .header-logo img {
+    width: 50%;
   }
 }
 
@@ -104,14 +111,17 @@ img {
   }
 }
 
-
-
  @media screen and (max-width: 540px) {
+  .topnav {
+    margin-top: 8vw;
+  }
   .topnav a {display: none;}
   .topnav a.icon {
     float: right;
     display: block;
-    margin-top: -15px;
+    margin-top: -10px;
+    margin-right: 0;
+    padding-right: 0;
   }
 } 
 
@@ -120,8 +130,7 @@ main {
   font-weight: bolder;
   color: black;
   padding-top: 0.5vw;
-  /* padding-left: 2vw; */
-  /* padding-right: 2vw; */
+ 
   margin: 1px 20px 15px 0px;
   border-radius: 2rem;
   text-align: justify;
@@ -419,10 +428,12 @@ input[data-error]::after {
   font-size: 16px;
 }
 .hero-section {
-  min-height: 93vh;
+  /* min-height: 93vh; */
   border-radius: 10px;
   display: grid;
   grid-template-columns: repeat(12, 1fr);
+  grid-template-rows: 650px;
+  max-height: 650px;
   overflow: hidden;
   box-shadow: 0 2px 7px 2px rgba(0, 0, 0, 0.2);
   margin-bottom: 10px;
@@ -487,15 +498,18 @@ input[data-error]::after {
 .hero-section > .btn-signup {
   display: none;
 }
+
+
 footer {
-  padding-left: 2vw;
+  
   padding-right: 2vw;
-  margin: 0 20px;
+  margin: 0;
 }
 @media screen and (max-width: 800px) {
   .hero-section {
     display: block;
     box-shadow: unset;
+    min-height: 93vh;
   }
   .hero-content {
     background: #fff;
@@ -523,11 +537,50 @@ footer {
   .hero-section > .btn-signup {
     display: block;
     margin: 32px auto 10px;
-    padding: 12px 35px;
+    padding: 6px 28px;
   }
   .copyrights {
     margin-top: 50px;
     text-align: center;
+  }
+}
+
+@media screen and (max-width: 540px) {
+  .topnav{
+    margin-left: 6vw;
+    margin-right: 6vw;
+  }
+  main {
+    margin-right: 0;
+    padding-left: 6vw;
+    padding-right: 6vw;
+  }
+  .hero-section{
+    min-height: 0;
+    margin-bottom: 0;
+  }
+  .hero-headline {
+    font-size: 2.5rem;
+  }
+  .hero-content {
+    padding: 0;
+  }
+  .hero-text {
+    margin-top: 20px;
+    font-size: 0.8rem;
+    font-weight: 100;
+    width: 100%;
+    padding-right: 90px;
+  }
+  footer{
+    margin-top: 0;
+  }
+  .copyrights {
+    margin-top: 0;
+    font-size: 0.6rem;
+  }
+  .btn-signup {
+    font-size: 0.8rem;
   }
 }
 
