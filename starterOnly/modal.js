@@ -16,10 +16,12 @@ const lastName = document.getElementById("last");
 const email = document.getElementById("email");
 const birthdate = document.getElementById("birthdate");
 const tournamentsNumber = document.getElementById("quantity");
+const radios = document.querySelectorAll('input[name="location"]');
+const terms = document.getElementById("checkbox1");
 const closeModalBtn = document.querySelector(".close");
 const form = document.getElementById("form");
-const radios = document.querySelectorAll('input[name="location"]');
-
+const textLabel = document.querySelector(".text-label");
+const modalBtnSubmit = document.querySelector(".btn-submit");
 
 // launch modal event
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
@@ -48,19 +50,35 @@ const showError = (element) => {
   element.parentElement.setAttribute("data-error-visible", "true");
 };
 
+// Hide modal form elements
+const hideForm = () => {
+  formData.forEach((data) => data.style.opacity = "0");
+  textLabel.style.opacity = "0";
+};
+
+// Turn modal submit button to close button
+const modalBtnClose = () => {
+  modalBtnSubmit.setAttribute("value", "Fermer");
+  form.setAttribute("onsubmit", "return closeModal();");
+};
+
 //Display validation message
+const showSuccess = () => {
+  hideForm();
+  modalBtnClose();
+};
 
-// const showSuccess = () => {};
 
-//Validate user inputs
-
+//Email validation regex
 const isEmailValid = email => {
   const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
   return re.test(String(email).toLowerCase());
 };
 
+// Get today's date to compare with date of birth
 const today = new Date();
 
+// Check if location checked
 const isLocationChecked = () => {
   for (const radio of radios) {
     if (radio.checked) {
@@ -72,6 +90,7 @@ const isLocationChecked = () => {
   }
 };
 
+//Validate user inputs
 const validate = () => {
 
   const firstNameValue = firstName.value.trim();
@@ -100,33 +119,18 @@ const validate = () => {
 
           if (tournamentsNumberValue < 0 || tournamentsNumberValue > 99) {
             showError(tournamentsNumber);
-          } else 
+          } else
 
-          if (isLocationChecked == false) {
-            showError(radios);
-          }
-
-
+            if (isLocationChecked == false) {
+              showError(radios);
+            } else
+              if (!terms.checked) {
+                showError(terms);
+              } else {
+                showSuccess();
+              }
 
 };
 
-
-// Check if "location" radio button selected
-function validateRadio() {
-  let valid = false;
-  for (let i = 0; i < locationUserInput.length; i++) {
-    if (locationUserInput[i].checked) {
-      valid = true;
-      break;
-    }
-  }
-  if (valid) {
-    alert("succeeeeess")
-  }
-  else {
-    alert("faiiiiil")
-    console.log("it workssss")
-  }
-}
 
 
