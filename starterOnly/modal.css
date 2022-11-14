@@ -132,7 +132,8 @@ main {
   font-weight: bolder;
   color: black;
   padding-top: 0.5vw;
- 
+  padding-right: 3.5vw;
+  padding-left: 3.5%;
   margin: 1px 20px 15px 0px;
   border-radius: 2rem;
   text-align: justify;
