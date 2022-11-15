@@ -33,6 +33,11 @@ function launchModal() {
 
 // close modal form event
 closeModalBtn.addEventListener("click", closeModal);
+window.addEventListener('keydown', (e) => {
+  if(e.key === 'Escape'){
+    closeModal()
+  }
+})
 
 // close modal form
 function closeModal() {
@@ -42,10 +47,11 @@ function closeModal() {
 //Submit button event function
 form.addEventListener("submit", e => {
   e.preventDefault();
+  validate()
   // validateInputs();
 });
 
-//Display error message 
+//Display error message
 const showError = (element) => {
   element.parentElement.setAttribute("data-error-visible", "true");
 };
@@ -83,15 +89,38 @@ const isLocationChecked = () => {
   for (const radio of radios) {
     if (radio.checked) {
       return true;
-      break;
-    } else {
-      return false;
     }
   }
+  return false;
 };
+
+const validateFirstName = () => {
+  const firstNameValue = firstName.value.trim();
+  if (firstNameValue === '' || firstNameValue.length < 2){
+    showError(firstName)
+    return false
+  }
+  return true
+}
+
+const validateLastName = () => {
+  const lastNameValue = lastName.value.trim();
+  if (lastNameValue === '' || lastNameValue.length < 2){
+    showError(lastName)
+    return false
+  }
+  return true
+}
 
 //Validate user inputs
 const validate = () => {
+
+  const validFirstName = validateFirstName()
+  const validLastName = validateLastName()
+
+  if(validFirstName && validLastName){
+    showSuccess()
+  }
 
   const firstNameValue = firstName.value.trim();
   const lastNameValue = lastName.value.trim();
@@ -99,7 +128,9 @@ const validate = () => {
   const birthdateValue = birthdate.value.trim();
   const tournamentsNumberValue = tournamentsNumber.value.trim();
 
-  if (firstNameValue === '' || firstNameValue.length < 2) {
+
+
+  /*if (firstNameValue === '' || firstNameValue.length < 2) {
     showError(firstName);
   } else
 
@@ -113,7 +144,7 @@ const validate = () => {
         showError(email);
       } else
 
-        if (birthdateValue.getTime() >= today.getTime()) {
+        if (new Date(birthdateValue).getTime() <= today.getTime()) {
           showError(birthdate);
         } else
 
@@ -128,7 +159,7 @@ const validate = () => {
                 showError(terms);
               } else {
                 showSuccess();
-              }
+              }*/
 
 };
 
